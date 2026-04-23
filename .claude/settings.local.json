@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(gunzip)",
+      "Read(//tmp/**)",
+      "Bash(tar -tf /tmp/design_bundle.tar)",
+      "Bash(tar -xf /tmp/design_bundle.tar -C /tmp/)",
+      "Bash(cp /tmp/controlhub/project/ControlHub.html \"D:/Study/Project/ControlHub/public/ControlHub.html\")",
+      "Bash(cp /tmp/controlhub/project/styles.css \"D:/Study/Project/ControlHub/public/styles.css\")",
+      "Bash(cp /tmp/controlhub/project/tweaks-panel.jsx \"D:/Study/Project/ControlHub/public/tweaks-panel.jsx\")",
+      "Bash(cp /tmp/controlhub/project/icons.jsx \"D:/Study/Project/ControlHub/public/icons.jsx\")",
+      "Bash(cp /tmp/controlhub/project/data.jsx \"D:/Study/Project/ControlHub/public/data.jsx\")"
+    ]
+  }
+}
