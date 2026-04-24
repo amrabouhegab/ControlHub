@@ -1,0 +1,57 @@
+<aside class="sidebar" [class.collapsed]="collapsed()">
+  <div class="sb-brand">
+    <div class="sb-logo"></div>
+    @if (!collapsed()) {
+      <div class="sb-brand-text">
+        <div class="sb-brand-name">ControlHub</div>
+        <div class="sb-brand-org">Northwind Inc.</div>
+      </div>
+    }
+  </div>
+
+  <nav class="sb-nav" aria-label="Primary">
+    @for (group of navGroups(); track group.group) {
+      <div class="sb-group-wrapper">
+        @if (!collapsed()) {
+          <div class="sb-group">{{ group.group }}</div>
+        }
+        @for (item of group.items; track item.id) {
+          <a
+            class="sb-item"
+            [routerLink]="['/' + item.id]"
+            routerLinkActive="active"
+            [title]="collapsed() ? item.label : ''"
+           >
+            <mat-icon class="sb-icon">{{ item.icon }}</mat-icon>
+            @if (!collapsed()) {
+              <span class="sb-label">{{ item.label }}</span>
+            }
+            @if (getBadge(item)) {
+              <span class="sb-badge">{{ getBadge(item) }}</span>
+            }
+          </a>
+        }
+      </div>
+    }
+  </nav>
+
+  <div class="sb-foot">
+    <button
+      mat-icon-button
+      class="sb-collapse-btn"
+      (click)="toggle()"
+      [title]="collapsed() ? 'Expand' : 'Collapse'"
+      [attr.aria-expanded]="!collapsed()"
+     >
+      <mat-icon>{{ collapsed() ? 'chevron_right' : 'chevron_left' }}</mat-icon>
+    </button>
+    @if (!collapsed()) {
+      <div class="sb-version">
+        <span class="sb-ver-num">v4.18.2</span>
+        <span class="sb-status">
+          <span class="sb-status-dot"></span> OK
+        </span>
+      </div>
+    }
+  </div>
+</aside>

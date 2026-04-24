@@ -1,0 +1,46 @@
+<section class="ch-card feed-list" [attr.aria-label]="variant() === 'activity' ? 'Recent activity' : 'Alerts'">
+  <div class="feed-header">
+    <h3 class="feed-title">{{ variant() === 'activity' ? 'Recent activity' : 'Alerts' }}</h3>
+    @if (variant() === 'activity') {
+      <button mat-button class="view-all-btn">
+        View all
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    }
+  </div>
+
+  @if (isEmpty()) {
+    <div class="feed-empty">No items yet</div>
+  } @else {
+    <ul class="feed-items" role="list">
+      @for (item of items(); track item.title) {
+        @if (variant() === 'alerts') {
+          <li>
+            <button class="feed-btn" [class.danger]="item.tone === 'danger'" [class.accent]="item.tone === 'accent'">
+              <div class="feed-icon-wrap" [class]="item.tone || 'default'">
+                <mat-icon>{{ item.icon }}</mat-icon>
+              </div>
+              <div class="feed-text">
+                <div class="feed-item-title">{{ item.title }}</div>
+                <div class="feed-item-sub">{{ item.subtitle }}</div>
+              </div>
+              <div class="feed-time">{{ item.time }}</div>
+            </button>
+          </li>
+        } @else {
+          <li>
+            <div class="feed-row">
+              <div class="feed-icon-wrap" [class]="item.tone || 'default'">
+                <mat-icon>{{ item.icon }}</mat-icon>
+              </div>
+              <div class="feed-text">
+                <span class="feed-who">{{ item.title }}</span> {{ item.subtitle }}
+                <div class="feed-time">{{ item.time }}</div>
+              </div>
+            </div>
+          </li>
+        }
+      }
+    </ul>
+  }
+</section>

@@ -1,0 +1,28 @@
+<section class="ch-card kpi-card">
+  <div class="kpi-content">
+    <div class="kpi-header">
+      <span class="kpi-label">{{ label() }}</span>
+      @if (spark().length > 0) {
+        <div class="kpi-spark-wrap">
+          <ngx-charts-line-chart
+            [results]="sparkSeries()"
+            [view]="[72, 28]"
+            [xAxis]="false"
+            [yAxis]="false"
+            [legend]="false"
+            [showGridLines]="false"
+            [autoScale]="true"
+            [customColors]="colors()"
+            aria-hidden="true"
+          ></ngx-charts-line-chart>
+        </div>
+      }
+    </div>
+    <div class="kpi-value">{{ value() }}</div>
+    <div class="kpi-delta" [class]="deltaClass()" [attr.aria-label]="direction() === 'up' ? delta() + ' vs last 30 days' : delta() + ' vs last 30 days'">
+      <mat-icon>{{ direction() === 'up' ? 'trending_up' : 'trending_down' }}</mat-icon>
+      <span>{{ delta() }}</span>
+      <span class="kpi-meta">{{ meta() }}</span>
+    </div>
+  </div>
+</section>

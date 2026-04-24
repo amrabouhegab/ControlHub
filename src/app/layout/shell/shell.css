@@ -1,0 +1,50 @@
+.app-shell {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+  padding: 8px 16px;
+  background: var(--sys-color-accent);
+  color: var(--sys-bg-elev);
+  border-radius: 8px;
+  font-weight: 600;
+  z-index: 9999;
+}
+
+.shell-sidebar {
+  grid-row: 1 / 3;
+}
+
+.shell-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.shell-topbar {
+  flex-shrink: 0;
+}
+
+.shell-content {
+  flex: 1;
+  padding: 24px;
+  background: var(--sys-bg);
+  overflow-y: auto;
+}

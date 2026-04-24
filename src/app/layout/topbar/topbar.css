@@ -1,0 +1,131 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 16px;
+  background: var(--sys-bg-elev);
+  border-bottom: 1px solid var(--sys-line-1);
+  gap: 24px;
+}
+
+.tb-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.tb-title h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--sys-ink-1);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.tb-crumbs {
+  font-size: 12px;
+  color: var(--sys-ink-4);
+}
+
+.tb-search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 400px;
+  height: 36px;
+  padding: 0 12px;
+  background: var(--sys-bg-sunken);
+  border: 1px solid var(--sys-line-1);
+  border-radius: 8px;
+  gap: 8px;
+}
+
+.tb-search-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: var(--sys-ink-4);
+}
+
+.tb-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--sys-ink-1);
+  outline: none;
+}
+
+.tb-search input::placeholder {
+  color: var(--sys-ink-5);
+}
+
+.tb-search kbd {
+  padding: 2px 6px;
+  font-size: 11px;
+  font-family: var(--sys-font-mono);
+  background: var(--sys-bg-elev);
+  border: 1px solid var(--sys-line-2);
+  border-radius: 4px;
+  color: var(--sys-ink-4);
+}
+
+.tb-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.tb-icon-btn {
+  color: var(--sys-ink-3);
+}
+
+.tb-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px 4px 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 120ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.tb-user:hover {
+  background: var(--sys-bg-hover);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--sys-color-accent);
+  color: var(--sys-bg-elev);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tb-user-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.tb-user-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sys-ink-1);
+}
+
+.tb-user-role {
+  font-size: 11px;
+  color: var(--sys-ink-4);
+}
+
+.tb-chev {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  color: var(--sys-ink-4);
+}
