@@ -1,0 +1,63 @@
+<h2 mat-dialog-title>Invite a new user</h2>
+<p class="dialog-sub">They'll receive an email invitation valid for 7 days.</p>
+
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="send()" class="invite-form">
+    <div class="row-2">
+      <mat-form-field appearance="outline">
+        <mat-label>First name</mat-label>
+        <input matInput formControlName="firstName" placeholder="Jamie" autocomplete="given-name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName="lastName" placeholder="Park" autocomplete="family-name">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Work email</mat-label>
+      <input matInput formControlName="email" type="email" placeholder="jamie.park@northwind.io" autocomplete="email">
+      @if (form.controls.email.touched && form.controls.email.errors?.['pattern']) {
+        <mat-error>Enter a valid email address.</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="row-2">
+      <mat-form-field appearance="outline">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          @for (r of roles; track r) {
+            <mat-option [value]="r">{{ r }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Department</mat-label>
+        <mat-select formControlName="dept">
+          @for (d of departments; track d) {
+            <mat-option [value]="d">{{ d }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Personal note (optional)</mat-label>
+      <textarea matInput formControlName="note" rows="3"
+                placeholder="Welcome to the team — let me know if you need help getting set up."></textarea>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="requireMfa">
+      Require MFA enrollment on first login
+    </mat-checkbox>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
+  <button mat-flat-button color="primary" type="button"
+          [disabled]="form.invalid" (click)="send()">
+    <mat-icon>send</mat-icon>
+    Send invitation
+  </button>
+</mat-dialog-actions>

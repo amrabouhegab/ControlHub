@@ -1,0 +1,38 @@
+:host { display: inline-flex; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 8px;
+  border-radius: var(--sys-radius-full);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  background: var(--sys-bg-muted);
+  color: var(--sys-ink-2);
+  border: 1px solid var(--sys-line-1);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sys-ink-4);
+  flex-shrink: 0;
+}
+
+.chip.tone-good { background: var(--sys-color-good-soft); color: var(--sys-color-good-ink); border-color: var(--sys-color-good-border); }
+.chip.tone-good .dot { background: var(--sys-color-good); }
+
+.chip.tone-warn { background: var(--sys-color-warn-soft); color: var(--sys-color-warn-ink); border-color: var(--sys-color-warn-border); }
+.chip.tone-warn .dot { background: var(--sys-color-warn); }
+
+.chip.tone-danger { background: var(--sys-color-danger-soft); color: var(--sys-color-danger-ink); border-color: var(--sys-color-danger-border); }
+.chip.tone-danger .dot { background: var(--sys-color-danger); }
+
+.chip.tone-info { background: var(--sys-color-info-soft); color: var(--sys-color-info-ink); border-color: var(--sys-color-info-border); }
+.chip.tone-info .dot { background: var(--sys-color-info); }
+
+.chip.tone-accent { background: var(--sys-color-accent-soft); color: var(--sys-color-accent-ink); border-color: var(--sys-color-accent-border); }
+.chip.tone-accent .dot { background: var(--sys-color-accent); }

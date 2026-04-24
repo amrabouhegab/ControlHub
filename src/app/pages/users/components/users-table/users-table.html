@@ -1,0 +1,85 @@
+<div class="tbl-wrap">
+  <table class="dt">
+    <thead>
+      <tr>
+        <th class="col-check">
+          <mat-checkbox
+            [checked]="allVisibleSelected()"
+            [indeterminate]="someVisibleSelected()"
+            (change)="toggleAllVisible.emit($event.checked)"
+            aria-label="Select all visible users"></mat-checkbox>
+        </th>
+        @for (col of columns; track col.key) {
+          <th [attr.aria-sort]="ariaSort(col.key)">
+            <button type="button" class="sort-btn" (click)="onHeaderClick(col.key)">
+              {{ col.label }}
+              @if (sort().key === col.key) {
+                <mat-icon class="sort-ico">{{ sort().dir === 'asc' ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
+              }
+            </button>
+          </th>
+        }
+        <th class="col-actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (u of rows(); track u.id) {
+        <tr [class.selected]="selection().has(u.id)">
+          <td class="col-check">
+            <mat-checkbox
+              [checked]="selection().has(u.id)"
+              (change)="toggleRowSelection.emit(u.id)"
+              [attr.aria-label]="'Select ' + u.name"></mat-checkbox>
+          </td>
+          <td>
+            <div class="user-cell">
+              <span class="avatar" [attr.data-h]="u.h">{{ initials(u.name) }}</span>
+              <div class="user-text">
+                <button type="button" class="user-name" (click)="openUser.emit(u.id)">{{ u.name }}</button>
+                <div class="user-email">{{ u.email }}</div>
+              </div>
+            </div>
+          </td>
+          <td><span class="role-chip">{{ u.role }}</span></td>
+          <td><app-status-chip [status]="u.status"></app-status-chip></td>
+          <td class="muted">{{ u.dept }}</td>
+          <td class="muted tnum">{{ u.lastSeen }}</td>
+          <td class="col-actions">
+            <div class="row-actions">
+              <mat-slide-toggle
+                [checked]="u.status === 'active'"
+                (change)="toggleStatus.emit(u.id)"
+                [disabled]="u.status === 'pending'"
+                matTooltip="Toggle active"></mat-slide-toggle>
+              <button mat-icon-button type="button" (click)="openUser.emit(u.id)"
+                      aria-label="View user details" matTooltip="View details">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button mat-icon-button type="button" [matMenuTriggerFor]="rowMenu"
+                      aria-label="More actions" matTooltip="More">
+                <mat-icon>more_horiz</mat-icon>
+              </button>
+              <mat-menu #rowMenu="matMenu">
+                <button mat-menu-item disabled>No actions available</button>
+              </mat-menu>
+            </div>
+          </td>
+        </tr>
+      }
+      @if (rows().length === 0) {
+        <tr class="empty-row">
+          <td [attr.colspan]="columns.length + 2">
+            <div class="empty">
+              <mat-icon class="empty-ico">group_off</mat-icon>
+              <h4>No users match your filters</h4>
+              <p>Try clearing your search or widening the role and status filters.</p>
+              @if (anyFilterActive()) {
+                <button type="button" class="link-btn" (click)="clearFilters.emit()">Clear filters</button>
+              }
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

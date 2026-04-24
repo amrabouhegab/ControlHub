@@ -1,0 +1,116 @@
+<div class="users-page">
+  <section class="page-header">
+    <div>
+      <h1>User Management</h1>
+      <p class="sub">{{ subtitle() }}</p>
+    </div>
+    <div class="actions">
+      <button mat-stroked-button type="button" matTooltip="CSV import is a visual placeholder">
+        <mat-icon>upload</mat-icon>
+        Import CSV
+      </button>
+      <button mat-flat-button color="primary" type="button" (click)="openInvite()">
+        <mat-icon>person_add</mat-icon>
+        Invite user
+      </button>
+    </div>
+  </section>
+
+  <section class="ch-card">
+    <div class="toolbar">
+      <label class="search">
+        <mat-icon>search</mat-icon>
+        <input
+          type="text"
+          placeholder="Search name or email…"
+          [value]="store.search()"
+          (input)="onSearchInput($any($event.target).value)"
+          aria-label="Search users by name or email">
+      </label>
+
+      <button type="button"
+              class="filter-chip"
+              [class.active]="store.roleFilter() !== 'all'"
+              (click)="cycleRole()"
+              [attr.aria-label]="'Role filter: ' + labelForRole(store.roleFilter())">
+        <mat-icon>filter_list</mat-icon>
+        Role: <strong>{{ labelForRole(store.roleFilter()) }}</strong>
+      </button>
+
+      <button type="button"
+              class="filter-chip"
+              [class.active]="store.statusFilter() !== 'all'"
+              (click)="cycleStatus()"
+              [attr.aria-label]="'Status filter: ' + labelForStatus(store.statusFilter())">
+        <mat-icon>filter_list</mat-icon>
+        Status: <strong>{{ labelForStatus(store.statusFilter()) }}</strong>
+      </button>
+
+      <div class="spacer"></div>
+
+      @if (store.selection().size > 0) {
+        <span class="sel-count">{{ store.selection().size }} selected</span>
+        <button mat-stroked-button type="button">
+          <mat-icon>mail</mat-icon>
+          Email
+        </button>
+        <button mat-stroked-button type="button" [matMenuTriggerFor]="roleMenu">
+          <mat-icon>edit</mat-icon>
+          Change role
+        </button>
+        <mat-menu #roleMenu="matMenu">
+          @for (r of roles; track r) {
+            <button mat-menu-item (click)="bulkChangeRole(r)">{{ r }}</button>
+          }
+        </mat-menu>
+        <button mat-stroked-button color="warn" type="button" (click)="bulkDeactivate()">
+          <mat-icon>block</mat-icon>
+          Deactivate
+        </button>
+      }
+    </div>
+
+    <app-users-table
+      [rows]="store.paged()"
+      [sort]="sortState()"
+      [selection]="store.selection()"
+      [anyFilterActive]="anyFilterActive()"
+      (sortChange)="onSortChange($event)"
+      (toggleRowSelection)="onToggleRow($event)"
+      (toggleAllVisible)="onToggleAll($event)"
+      (toggleStatus)="onToggleStatus($event)"
+      (openUser)="openDrawer($event)"
+      (clearFilters)="clearFilters()">
+    </app-users-table>
+
+    <div class="pager">
+      <div class="pg-summary">{{ rangeLabel() }}</div>
+      <div class="pg-right">
+        @if (store.hasPersistedOverrides()) {
+          <button type="button" class="reset-link" (click)="resetDemo()">Reset demo data</button>
+        }
+        <div class="pg-nums">
+          <button mat-icon-button type="button"
+                  [disabled]="store.page() === 1"
+                  (click)="prevPage()"
+                  aria-label="Previous page">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          @for (p of pageNumbers(); track p) {
+            <button type="button"
+                    class="pg-btn"
+                    [class.on]="p === store.page()"
+                    (click)="goToPage(p)"
+                    [attr.aria-current]="p === store.page() ? 'page' : null">{{ p }}</button>
+          }
+          <button mat-icon-button type="button"
+                  [disabled]="store.page() >= pageNumbers().length"
+                  (click)="nextPage()"
+                  aria-label="Next page">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
