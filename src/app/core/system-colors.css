@@ -1,0 +1,66 @@
+:root {
+  /* Accent — semantic color */
+  --sys-color-accent: oklch(0.55 0.18 255);
+  --sys-color-accent-soft: oklch(0.55 0.18 255 / 0.12);
+  --sys-color-accent-border: oklch(0.55 0.18 255 / 0.3);
+  --sys-color-accent-ink: oklch(0.42 0.18 255);
+
+  /* Semantic colors — good/warn/danger/info */
+  --sys-color-good: oklch(0.58 0.15 150);
+  --sys-color-good-soft: oklch(0.58 0.15 150 / 0.12);
+  --sys-color-good-ink: oklch(0.35 0.15 150);
+  --sys-color-good-border: oklch(0.58 0.15 150 / 0.3);
+
+  --sys-color-warn: oklch(0.72 0.15 70);
+  --sys-color-warn-soft: oklch(0.72 0.15 70 / 0.15);
+  --sys-color-warn-ink: oklch(0.45 0.15 70);
+  --sys-color-warn-border: oklch(0.72 0.15 70 / 0.3);
+
+  --sys-color-danger: oklch(0.58 0.2 25);
+  --sys-color-danger-soft: oklch(0.58 0.2 25 / 0.12);
+  --sys-color-danger-ink: oklch(0.35 0.2 25);
+  --sys-color-danger-border: oklch(0.58 0.2 25 / 0.3);
+
+  --sys-color-info: oklch(0.6 0.14 230);
+  --sys-color-info-soft: oklch(0.6 0.14 230 / 0.12);
+  --sys-color-info-ink: oklch(0.38 0.14 230);
+  --sys-color-info-border: oklch(0.6 0.14 230 / 0.3);
+
+  /* Inks — neutrals */
+  --sys-ink-1: oklch(0.2 0.015 60);
+  --sys-ink-2: oklch(0.35 0.015 60);
+  --sys-ink-3: oklch(0.5 0.012 60);
+  --sys-ink-4: oklch(0.65 0.01 60);
+  --sys-ink-5: oklch(0.8 0.008 60);
+
+  /* Backgrounds */
+  --sys-bg: oklch(0.985 0.006 85);
+  --sys-bg-elev: oklch(1 0 0);
+  --sys-bg-sunken: oklch(0.965 0.008 85);
+  --sys-bg-muted: oklch(0.955 0.008 85);
+  --sys-bg-hover: oklch(0.94 0.01 85);
+
+  /* Lines */
+  --sys-line-1: oklch(0.92 0.008 80);
+  --sys-line-2: oklch(0.88 0.01 80);
+  --sys-line-3: oklch(0.82 0.012 80);
+
+  /* Shadows */
+  --sys-shadow-xs: 0 1px 2px rgba(30, 20, 10, 0.04);
+  --sys-shadow-sm: 0 1px 2px rgba(30, 20, 10, 0.04), 0 2px 8px rgba(30, 20, 10, 0.04);
+  --sys-shadow-md: 0 2px 4px rgba(30, 20, 10, 0.04), 0 8px 20px rgba(30, 20, 10, 0.06);
+  --sys-shadow-lg: 0 8px 32px rgba(30, 20, 10, 0.1), 0 16px 48px rgba(30, 20, 10, 0.08);
+
+  /* Radii */
+  --sys-radius-xs: 6px;
+  --sys-radius-sm: 8px;
+  --sys-radius-md: 12px;
+  --sys-radius-lg: 16px;
+  --sys-radius-xl: 20px;
+  --sys-radius-full: 999px;
+
+  /* Typography */
+  --sys-font-sans: 'Inter Tight', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --sys-font-display: 'Fraunces', Georgia, serif;
+  --sys-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}

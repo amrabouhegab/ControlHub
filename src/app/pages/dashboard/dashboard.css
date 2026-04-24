@@ -1,0 +1,173 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dash-greeting h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--sys-ink-1);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.dash-sub {
+  font-size: 14px;
+  color: var(--sys-ink-3);
+  margin: 4px 0 0;
+}
+
+.dash-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dash-range-btn {
+  --mdc-outlined-button-label-text-size: 13px;
+}
+
+.dash-export-btn {
+  --mdc-filled-button-label-text-size: 13px;
+}
+
+.dash-kpis {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .dash-kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .dash-kpis {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.dash-charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 1024px) {
+  .dash-charts {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.dash-line-card,
+.dash-donut-card {
+  background: var(--sys-bg-elev);
+  border: 1px solid var(--sys-line-1);
+  border-radius: var(--sys-radius-lg);
+  box-shadow: var(--sys-shadow-sm);
+  padding: 16px;
+}
+
+.card-head {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.card-head > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-head h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sys-ink-1);
+  margin: 0;
+}
+
+.card-sub {
+  font-size: 12px;
+  color: var(--sys-ink-4);
+  margin-top: 4px;
+}
+
+.chart-wrap {
+  height: 240px;
+}
+
+.chart-wrap.donut {
+  height: 180px;
+}
+
+.donut-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.donut-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-name {
+  color: var(--sys-ink-2);
+  flex: 1;
+}
+
+.legend-val {
+  font-weight: 500;
+  color: var(--sys-ink-1);
+  font-variant-numeric: tabular-nums;
+}
+
+.dash-feeds {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 1024px) {
+  .dash-feeds {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ch-card {
+  background: var(--sys-bg-elev);
+  border: 1px solid var(--sys-line-1);
+  border-radius: var(--sys-radius-lg);
+  box-shadow: var(--sys-shadow-sm);
+}
+
+.card-body {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}

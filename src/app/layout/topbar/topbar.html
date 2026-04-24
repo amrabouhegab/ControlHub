@@ -1,0 +1,29 @@
+<header class="topbar">
+  <div class="tb-title">
+    <h1>{{ title() }}</h1>
+    <div class="tb-crumbs">{{ crumb() }}</div>
+  </div>
+
+  <div class="tb-search">
+    <mat-icon class="tb-search-icon">search</mat-icon>
+    <input type="text" placeholder="Search users, orders, resources…" />
+    <kbd>⌘K</kbd>
+  </div>
+
+  <div class="tb-actions">
+    <button mat-icon-button class="tb-icon-btn" title="Toggle theme" aria-label="Toggle theme">
+      <mat-icon>dark_mode</mat-icon>
+    </button>
+    <button mat-icon-button class="tb-icon-btn" title="Notifications" aria-label="Notifications">
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <div class="tb-user">
+      <div class="avatar" data- initials="AC">AC</div>
+      <div class="tb-user-meta">
+        <div class="tb-user-name">Amelia Chen</div>
+        <div class="tb-user-role">Administrator</div>
+      </div>
+      <mat-icon class="tb-chev">expand_more</mat-icon>
+    </div>
+  </div>
+</header>

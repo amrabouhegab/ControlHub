@@ -1,0 +1,97 @@
+<div class="dashboard">
+  <section class="dash-header">
+    <div class="dash-greeting">
+      <h1>Good morning, Amelia</h1>
+      <p class="dash-sub">Here's what's happening across Northwind today. Systems are nominal.</p>
+    </div>
+    <div class="dash-actions">
+      <button mat-stroked-button [matMenuTriggerFor]="rangeMenu" class="dash-range-btn" aria-haspopup="menu">
+        <mat-icon>calendar_today</mat-icon>
+        {{ rangeLabel() }}
+        <mat-icon>expand_more</mat-icon>
+      </button>
+      <mat-menu #rangeMenu="matMenu">
+        @for (opt of rangeOptions; track opt.value) {
+          <button mat-menu-item (click)="setRange(opt.value)" [attr.aria-label]="opt.label">
+            {{ opt.label }}
+          </button>
+        }
+      </mat-menu>
+      <button mat-flat-button color="primary" class="dash-export-btn">
+        <mat-icon>download</mat-icon>
+        Export
+      </button>
+    </div>
+  </section>
+
+  <section class="dash-kpis">
+    @for (kpi of kpis(); track kpi.label) {
+      <app-kpi-card
+        [label]="kpi.label"
+        [value]="kpi.value"
+        [delta]="kpi.delta"
+        [direction]="kpi.dir"
+        [meta]="kpi.meta"
+        [spark]="kpi.spark"
+        [tone]="kpi.tone"
+      ></app-kpi-card>
+    }
+  </section>
+
+  <section class="dash-charts">
+    <div class="dash-line-card">
+      <div class="card-head">
+        <div>
+          <h3>Growth & usage</h3>
+          <div class="card-sub">New signups (orange) and weekly active users (blue), last 26 days</div>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <ngx-charts-line-chart
+          [results]="lineSeries()"
+          [xAxis]="true"
+          [yAxis]="true"
+          [showGridLines]="true"
+          [autoScale]="true"
+          [customColors]="lineColors()"
+          [legend]="false"
+        ></ngx-charts-line-chart>
+      </div>
+    </div>
+
+    <div class="dash-donut-card">
+      <div class="card-head">
+        <div>
+          <h3>Traffic mix</h3>
+          <div class="card-sub">Sessions by channel</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrap donut">
+          <ngx-charts-pie-chart
+            [results]="pieResults()"
+            [doughnut]="true"
+            [arcWidth]="0.35"
+            [customColors]="pieColors()"
+            [labels]="false"
+            [legend]="false"
+          ></ngx-charts-pie-chart>
+        </div>
+        <ul class="donut-legend">
+          @for (item of pieResults(); track item.name) {
+            <li>
+              <span class="legend-dot" [style.background]="pieColors().find(c => c.name === item.name)?.value"></span>
+              <span class="legend-name">{{ item.name }}</span>
+              <span class="legend-val">{{ item.value | number }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="dash-feeds">
+    <app-feed-list [items]="activity()" variant="activity"></app-feed-list>
+    <app-feed-list [items]="alerts()" variant="alerts"></app-feed-list>
+  </section>
+</div>

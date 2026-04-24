@@ -1,0 +1,13 @@
+<div class="app-shell">
+  <a href="#content" class="skip-link">Skip to content</a>
+
+  <app-sidebar class="shell-sidebar" [collapsed]="collapsed()"></app-sidebar>
+
+  <div class="shell-main">
+    <app-topbar class="shell-topbar" [title]="title" [crumb]="crumb"></app-topbar>
+
+    <main id="content" class="shell-content" tabindex="-1">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
