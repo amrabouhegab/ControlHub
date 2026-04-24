@@ -1,3 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+@import './app/core/system-colors.css';
+
+@theme {
+  --color-sys-accent: var(--sys-color-accent);
+  --color-sys-accent-soft: var(--sys-color-accent-soft);
+  --color-sys-good: var(--sys-color-good);
+  --color-sys-warn: var(--sys-color-warn);
+  --color-sys-danger: var(--sys-color-danger);
+  --color-sys-info: var(--sys-color-info);
+  --color-sys-ink-1: var(--sys-ink-1);
+  --color-sys-ink-2: var(--sys-ink-2);
+  --color-sys-ink-3: var(--sys-ink-3);
+  --color-sys-ink-4: var(--sys-ink-4);
+  --color-sys-ink-5: var(--sys-ink-5);
+  --color-sys-bg: var(--sys-bg);
+  --color-sys-bg-elev: var(--sys-bg-elev);
+  --color-sys-bg-sunken: var(--sys-bg-sunken);
+  --color-sys-bg-muted: var(--sys-bg-muted);
+  --color-sys-bg-hover: var(--sys-bg-hover);
+  --color-sys-line-1: var(--sys-line-1);
+  --color-sys-line-2: var(--sys-line-2);
+  --color-sys-line-3: var(--sys-line-3);
+  --radius-sys-xs: var(--sys-radius-xs);
+  --radius-sys-sm: var(--sys-radius-sm);
+  --radius-sys-md: var(--sys-radius-md);
+  --radius-sys-lg: var(--sys-radius-lg);
+  --radius-sys-xl: var(--sys-radius-xl);
+  --radius-sys-full: var(--sys-radius-full);
+  --font-sys-sans: var(--sys-font-sans);
+  --font-sys-display: var(--sys-font-display);
+  --font-sys-mono: var(--sys-font-mono);
+}
+
+html {
+  font-family: var(--sys-font-sans);
+  background: var(--sys-bg);
+  color: var(--sys-ink-1);
+}
+
+html body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+html {
+  --mat-sys-primary: var(--sys-color-accent);
+  --mat-sys-surface: var(--sys-bg-elev);
+  --mat-sys-on-surface: var(--sys-ink-1);
+  --mat-sys-on-primary: oklch(1 0 0);
+  --mat-sys-outline: var(--sys-line-1);
+  --mat-sys-outline-variant: var(--sys-line-2);
+}
