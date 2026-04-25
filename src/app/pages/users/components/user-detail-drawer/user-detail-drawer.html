@@ -1,0 +1,64 @@
+<div class="drawer-head">
+  <div>
+    <h3>{{ user.name }}</h3>
+    <div class="sub">{{ user.email }}</div>
+  </div>
+  <button mat-icon-button type="button" (click)="close()" aria-label="Close details">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div class="drawer-body">
+  <div class="hero">
+    <span class="avatar-xl" [attr.data-h]="user.h">{{ initials() }}</span>
+    <div class="hero-text">
+      <div class="hero-name">{{ user.name }}</div>
+      <div class="hero-meta">{{ user.role }} · {{ user.dept }}</div>
+      <div class="hero-chips">
+        <app-status-chip [status]="user.status"></app-status-chip>
+        @if (user.mfa) {
+          <span class="chip mfa"><mat-icon>shield</mat-icon> MFA</span>
+        }
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-label">Details</div>
+    <dl class="grid">
+      <dt>User ID</dt><dd class="mono">{{ user.id }}</dd>
+      <dt>Email</dt><dd>{{ user.email }}</dd>
+      <dt>Joined</dt><dd>{{ user.joined }}</dd>
+      <dt>Last seen</dt><dd>{{ user.lastSeen }}</dd>
+      <dt>Sessions</dt><dd>{{ user.sessions }} active</dd>
+    </dl>
+  </section>
+
+  <section>
+    <div class="section-label">Recent activity</div>
+    @if (activity().length > 0) {
+      <ul class="activity">
+        @for (a of activity(); track a.t + a.action) {
+          <li>
+            <mat-icon class="activity-ico">history</mat-icon>
+            <div class="activity-body">
+              <div class="activity-title"><strong>{{ a.action }}</strong> · {{ a.target }}</div>
+              @if (a.meta) { <div class="activity-meta">{{ a.meta }}</div> }
+            </div>
+            <div class="activity-time">{{ a.t }}</div>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="empty-note">No recent activity for this user.</p>
+    }
+  </section>
+</div>
+
+<div class="drawer-foot">
+  <button mat-stroked-button type="button" (click)="close()">Close</button>
+  <button mat-flat-button color="primary" type="button" disabled>
+    <mat-icon>edit</mat-icon>
+    Edit user
+  </button>
+</div>

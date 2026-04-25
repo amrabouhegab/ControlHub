@@ -52,3 +52,17 @@ html {
   --mat-sys-outline: var(--sys-line-1);
   --mat-sys-outline-variant: var(--sys-line-2);
 }
+
+/* Side drawer (right-anchored MatDialog) */
+.ch-side-dialog .mat-mdc-dialog-container {
+  border-radius: 0;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.12);
+}
+
+.ch-side-dialog .mdc-dialog__surface {
+  border-radius: 0 !important;
+}
+
+.ch-side-backdrop {
+  background: rgba(0, 0, 0, 0.32);
+}
