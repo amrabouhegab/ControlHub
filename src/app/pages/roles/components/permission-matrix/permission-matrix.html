@@ -1,0 +1,38 @@
+<div class="matrix-wrap">
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th class="perm-col">Permission</th>
+        @for (role of roles(); track role.id) {
+          <th>{{role.name}}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (section of sections(); track section.section) {
+        <!-- Section header row -->
+        <tr>
+          <td class="sec" [attr.colspan]="roles().length + 1">{{section.section.toUpperCase()}}</td>
+        </tr>
+        <!-- Permission rows -->
+        @for (permission of section.items; track permission.k) {
+          <tr>
+            <td class="perm-cell">
+              <div class="perm-label">{{permission.label}}</div>
+              <div class="perm-slug">{{permission.k}}</div>
+            </td>
+            @for (role of roles(); track role.id) {
+              <td class="check-cell">
+                <mat-checkbox 
+                  [checked]="draftMatrix()[role.id]?.has(permission.k) ?? false"
+                  (change)="toggle.emit({ roleId: role.id, permKey: permission.k })"
+                  [aria-label]="permission.label + ' for ' + role.name">
+                </mat-checkbox>
+              </td>
+            }
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>

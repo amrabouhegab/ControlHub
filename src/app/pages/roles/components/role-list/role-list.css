@@ -1,0 +1,102 @@
+:host {
+  display: block;
+}
+
+.ch-card {
+  border-radius: var(--sys-radius-lg);
+  border: 1px solid var(--sys-line-1);
+  overflow: hidden;
+}
+
+.card-head {
+  background: var(--sys-bg-sunken);
+  border-bottom: 1px solid var(--sys-line-1);
+  padding: 12px 16px;
+}
+
+.card-head h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sys-ink-1);
+}
+
+.role-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.role-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.role-row:hover {
+  background-color: var(--sys-bg-hover);
+}
+
+.role-row.active {
+  background: var(--sys-bg-sunken);
+  border: 1px solid var(--sys-line-1);
+}
+
+.role-bar {
+  width: 6px;
+  height: 28px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.role-bar--accent {
+  background: var(--sys-color-accent);
+}
+
+.role-bar--info {
+  background: var(--sys-color-info);
+}
+
+.role-bar--good {
+  background: var(--sys-color-good);
+}
+
+.role-bar--warn {
+  background: var(--sys-color-warn);
+}
+
+.role-bar--danger {
+  background: var(--sys-color-danger);
+}
+
+.role-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.role-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sys-ink-1);
+  margin-bottom: 2px;
+}
+
+.role-meta {
+  font-size: 12px;
+  color: var(--sys-ink-4);
+}
+
+.mat-icon {
+  font-size: 13px;
+  color: var(--sys-ink-4);
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}

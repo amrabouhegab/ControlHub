@@ -1,0 +1,97 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+}
+
+.dialog-sub {
+  margin: 12px 0 20px;
+  font-size: 13px;
+  color: var(--sys-ink-3);
+}
+
+.role-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.color-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 4px 0;
+}
+
+.color-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--sys-line-2);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color-swatch::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background-color: var(--sys-color-accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.mat-radio-button.mat-radio-checked .color-swatch::after {
+  opacity: 1;
+}
+
+/* Color swatch backgrounds */
+.mat-radio-button[value="accent"] .color-swatch {
+  background-color: var(--sys-color-accent);
+}
+
+.mat-radio-button[value="info"] .color-swatch {
+  background-color: var(--sys-color-info);
+}
+
+.mat-radio-button[value="good"] .color-swatch {
+  background-color: var(--sys-color-good);
+}
+
+.mat-radio-button[value="warn"] .color-swatch {
+  background-color: var(--sys-color-warn);
+}
+
+.mat-radio-button[value="danger"] .color-swatch {
+  background-color: var(--sys-color-danger);
+}
+
+/* White text for dark backgrounds */
+.mat-radio-button[value="accent"] .color-swatch::after,
+.mat-radio-button[value="info"] .color-swatch::after,
+.mat-radio-button[value="good"] .color-swatch::after {
+  background-color: white;
+}
+
+.mat-radio-button[value="warn"] .color-swatch::after,
+.mat-radio-button[value="danger"] .color-swatch::after {
+  background-color: black;
+}
+
+.mat-radio-button .color-swatch {
+  border-color: transparent;
+}
+
+.mat-radio-button.mat-radio-checked .color-swatch {
+  border-color: var(--sys-color-accent);
+}

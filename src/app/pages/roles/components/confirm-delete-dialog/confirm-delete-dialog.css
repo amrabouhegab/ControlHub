@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+}
+
+.dialog-body {
+  margin: 20px 0;
+  font-size: 14px;
+  color: var(--sys-ink-1);
+}

@@ -1,0 +1,26 @@
+<div class="ch-card">
+  <div class="card-head">
+    <h3>Roles</h3>
+  </div>
+  <ul role="list">
+    @for (role of roles(); track role.id) {
+      <li>
+        <button type="button" 
+                role="option" 
+                [attr.aria-selected]="role.id === activeId()"
+                (click)="select.emit(role.id)"
+                class="role-row"
+                [class.active]="role.id === activeId()">
+          <span class="role-bar role-bar--{{role.color}}"></span>
+          <div class="role-content">
+            <span class="role-name">{{role.name}}</span>
+            <span class="role-meta">
+              {{role.users}} {{role.users === 1 ? 'user' : 'users'}} · {{counts()[role.id] ?? 0}} permissions
+            </span>
+          </div>
+          <mat-icon aria-hidden="true">chevron_right</mat-icon>
+        </button>
+      </li>
+    }
+  </ul>
+</div>

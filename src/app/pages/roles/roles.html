@@ -1,0 +1,90 @@
+<div class="page">
+  <div class="page-head">
+    <div>
+      <h1>Roles & Permissions</h1>
+      <div class="sub">Control what each role can see and do. Changes apply to all users with that role immediately.</div>
+    </div>
+    <div class="page-actions">
+      @if (isDirty()) {
+        <span class="chip warn"><span class="dot"></span>Unsaved changes</span>
+      }
+      <button mat-stroked-button type="button" (click)="duplicateRole()">
+        <mat-icon>content_copy</mat-icon>
+        Duplicate role
+      </button>
+      <button mat-flat-button color="primary" type="button" (click)="openNewRoleDialog()">
+        <mat-icon>add</mat-icon>
+        New role
+      </button>
+    </div>
+  </div>
+
+  <div class="ch-grid">
+    <!-- Role List (Left Card) -->
+    <div class="ch-card">
+      <div class="card-head"><h3>Roles</h3></div>
+      <app-role-list 
+        [roles]="store.roles()"
+        [activeId]="store.selectedRoleId()"
+        [counts]="store.permCountsById()"
+        (select)="onRoleSelect($event)"
+      />
+    </div>
+
+    <!-- Permission Matrix (Right Card) -->
+    <section class="ch-card matrix-card">
+      <!-- Card Head -->
+      <div class="card-head">
+        <div>
+          <h3>{{selectedRoleName()}}</h3>
+          <div class="card-sub">{{selectedRoleDescription()}}</div>
+        </div>
+          <div class="row">
+            <button mat-stroked-button type="button" (click)="duplicateRole()">
+              <mat-icon>content_copy</mat-icon>
+              Duplicate
+            </button>
+            @if (!store.activeRole().builtIn) {
+              <button
+                mat-stroked-button
+                type="button"
+                color="warn"
+                (click)="openConfirmDeleteDialog(store.selectedRoleId())">
+                <mat-icon>delete</mat-icon>
+              </button>
+            }
+          </div>
+      </div>
+
+      <!-- Permission Matrix -->
+      <div style="padding: 0 4px;">
+        <app-permission-matrix
+          [roles]="store.roles()"
+          [sections]="SECTIONS"
+          [draftMatrix]="store.draftMatrix()"
+          (toggle)="onPermissionToggle($event)"
+        />
+      </div>
+
+      <!-- Save/Discard Footer -->
+      @if (isDirty()) {
+        <div class="matrix-footer">
+          <div style="padding: 14px 20px; border-top: 1px solid var(--sys-line-1); background: var(--sys-bg-sunken); display: flex; justify-content: flex-end; gap: 8px;">
+            <button mat-stroked-button type="button" (click)="discardChanges()">Discard</button>
+            <button mat-flat-button color="primary" type="button" (click)="saveChanges()">
+              <mat-icon>check</mat-icon>
+              Save changes
+            </button>
+          </div>
+        </div>
+      }
+
+      <!-- Reset Demo Data Link -->
+      @if (hasPersistedOverrides()) {
+        <div class="reset-demo-link">
+          <a href="javascript:void(0)" (click)="resetToDemo()" class="text-muted small">Reset all demo data</a>
+        </div>
+      }
+    </section>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+:host {
+  display: block;
+}
+
+.matrix-wrap {
+  overflow-x: auto;
+  border-radius: var(--sys-radius-lg);
+  border: 1px solid var(--sys-line-1);
+  margin-top: 16px;
+}
+
+.matrix {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+
+.matrix th, .matrix td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--sys-line-1);
+}
+
+.matrix thead th {
+  text-align: center;
+  font-weight: 550;
+  font-size: 12px;
+  color: var(--sys-ink-2);
+  background: var(--sys-bg-sunken);
+  border-bottom: 1px solid var(--sys-line-2);
+  white-space: nowrap;
+}
+
+.matrix thead th:first-child {
+  text-align: left;
+}
+
+.matrix td {
+  text-align: center;
+}
+
+.matrix td:first-child {
+  text-align: left;
+  color: var(--sys-ink-1);
+  font-weight: 500;
+}
+
+.matrix td.sec {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sys-ink-4);
+  font-weight: 600;
+  background: var(--sys-bg-sunken);
+}
+
+.mat-checkbox {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+}
