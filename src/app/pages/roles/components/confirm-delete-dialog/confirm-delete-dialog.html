@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Delete role "{{data.roleName}}"?</h2>
+<p class="dialog-body">This cannot be undone.</p>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
+  <button mat-flat-button color="primary" type="button" (click)="confirm()">
+    <mat-icon>delete</mat-icon>
+    Delete
+  </button>
+</mat-dialog-actions>

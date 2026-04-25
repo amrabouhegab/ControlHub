@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Create a new role</h2>
+<p class="dialog-sub">Permissions start empty — toggle them on in the matrix.</p>
+
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="create()" class="role-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="e.g., Auditor" autocomplete="off">
+      @if (form.controls.name.touched && form.controls.name.errors?.['required']) {
+        <mat-error>Name is required</mat-error>
+      }
+      @if (form.controls.name.touched && form.controls.name.errors?.['minlength']) {
+        <mat-error>Name must be at least 2 characters</mat-error>
+      }
+      @if (form.controls.name.touched && form.controls.name.errors?.['notAvailable']) {
+        <mat-error>A role with this name already exists</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description (optional)</mat-label>
+      <textarea matInput formControlName="description" rows="3"
+                placeholder="Brief description of this role's purpose"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Color</mat-label>
+      <mat-radio-group formControlName="color" class="color-radio-group">
+        @for (color of colors; track color) {
+          <mat-radio-button [value]="color" class="color-option">
+            <div class="color-swatch" [style.background-color]="getColorCss(color)"></div>
+            {{color | titlecase}}
+          </mat-radio-button>
+        }
+      </mat-radio-group>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
+  <button mat-flat-button color="primary" type="button"
+          [disabled]="form.invalid" (click)="create()">
+    <mat-icon>add</mat-icon>
+    Create role
+  </button>
+</mat-dialog-actions>
